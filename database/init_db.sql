@@ -17,16 +17,16 @@ VALUES ('Red Bull Racing', 1),
 
 CREATE TABLE IF NOT EXISTS drivers (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    driver_fname VARCHAR(255) NOT NULL,
-    driver_lname VARCHAR(255) NOT NULL,
+    fname VARCHAR(255) NOT NULL,
+    lname VARCHAR(255) NOT NULL,
     driver_skill_factor DECIMAL(4, 2) NOT NULL,
     points INT DEFAULT 0,
     team_id INT,
     FOREIGN KEY(team_id) REFERENCES teams(id)
 );
 INSERT INTO drivers (
-        driver_fname,
-        driver_lname,
+        fname,
+        lname,
         driver_skill_factor,
         team_id
     )
