@@ -5,9 +5,9 @@ const app = express();
 
 const db = mysql.createPool({
   connectionLimit: 10,
-  host: "localhost",
+  host: "database",
   user: "root",
-  password: "salasana",
+  password: "secret",
   database: "f1db",
 });
 
