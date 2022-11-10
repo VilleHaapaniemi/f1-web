@@ -22,6 +22,9 @@ services:
     restart: on-failure
   frontend:
     build: ./frontend
+    environment:
+      # Required for react live reload to work.
+      WATCHPACK_POLLING: "true"
     ports: 
       - "3000:3000"
     volumes: 
