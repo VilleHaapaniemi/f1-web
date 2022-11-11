@@ -1,7 +1,12 @@
 const express = require("express");
 const mysql = require("mysql2/promise");
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
+
+app.use(bodyParser.json());
+app.use(cors());
 
 const db = mysql.createPool({
   connectionLimit: 10,
@@ -12,14 +17,15 @@ const db = mysql.createPool({
 });
 
 app.get("/", async (req, res) => {
+  console.log("TRYING TO FETCH TRACKS");
   try {
-    const drivers = await db.query("SELECT * FROM drivers");
-    console.log(drivers[0]);
+    const responseTracks = await db.query("SELECT * FROM tracks");
+    const tracks = responseTracks[0];
+    console.log(tracks);
+    res.json(tracks);
   } catch (err) {
     console.log(err);
   }
-  res.send("Toimiiko");
-  
 });
 
 app.listen(5000, () => {
