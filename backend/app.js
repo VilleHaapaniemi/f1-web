@@ -1,20 +1,12 @@
 const express = require("express");
-const mysql = require("mysql2/promise");
-const bodyParser = require('body-parser');
-const cors = require('cors');
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const db = require("./data/database");
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
-
-const db = mysql.createPool({
-  connectionLimit: 10,
-  host: "database",
-  user: "root",
-  password: "secret",
-  database: "f1db",
-});
 
 app.get("/", async (req, res) => {
   console.log("TRYING TO FETCH TRACKS");
