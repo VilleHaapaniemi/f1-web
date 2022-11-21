@@ -8,11 +8,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/", async (req, res) => {
+app.get("/tracks", async (req, res) => {
   console.log("TRYING TO FETCH TRACKS");
   try {
-    const responseTracks = await db.query("SELECT * FROM tracks");
-    const tracks = responseTracks[0];
+    const [tracks] = await db.query("SELECT * FROM tracks");
     console.log(tracks);
     res.json(tracks);
   } catch (err) {

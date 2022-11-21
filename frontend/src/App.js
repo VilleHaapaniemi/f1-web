@@ -1,15 +1,23 @@
-import React from "react";
+import React, { Fragment } from "react";
 
-async function fetchTracks() {
-  const response = await fetch('http://localhost:5000/');
-  const data = await response.json();
-  console.log(data);
-}
+import classes from "./App.module.css";
+import MainHeader from "./components/MainHeader";
 
-fetchTracks();
+// async function fetchTracks() {
+//   const response = await fetch('http://localhost:5000/');
+//   const data = await response.json();
+//   console.log(data);
+// }
+
+// fetchTracks();
 
 function App() {
-  return <h1>Hello World!</h1>;
+  return (
+    <Fragment>
+      <MainHeader />
+      <p>ergerger</p>
+    </Fragment>
+  );
 }
 
 export default App;

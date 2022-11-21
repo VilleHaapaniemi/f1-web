@@ -1,0 +1,21 @@
+ul {
+    background-color: rgb(199, 33, 33);
+    list-style-type: none;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0 -0.2rem 0.2rem rgb(26, 23, 23) inset;
+}
+
+li {
+    float: right;
+    text-align: center;
+    font-size: 1.3rem;
+    padding: 1.3rem 1rem;
+    text-decoration: none;
+    color: white;
+}
+
+li:first-child {
+    float: left;
+}
