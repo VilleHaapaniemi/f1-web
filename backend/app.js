@@ -19,6 +19,10 @@ app.get("/tracks", async (req, res) => {
   }
 });
 
+app.post("/simulateRace", async (req,res) => {
+  console.log("TRYING TO SIMULATE RACE");
+})
+
 app.listen(5000, () => {
   console.log("BACKEND LISTENING ON PORT 5000");
 });
