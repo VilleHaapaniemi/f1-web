@@ -1,0 +1,25 @@
+.nextTrack {
+    margin-top: 2rem;
+    margin-left: 0.5rem;
+    width: 50rem;
+    background-color: rgb(255, 255, 255);
+    border: 0.5rem solid rgb(199, 33, 33);
+    border-radius: 1rem;
+}
+
+.flex {
+    display: flex;
+}
+
+img {
+    height: 16rem;
+    display: inline;
+}
+
+h2 {
+    margin: 0.5rem 1rem;
+    font-size: 2rem;
+    text-decoration: underline;
+}
+
+
