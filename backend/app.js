@@ -21,7 +21,6 @@ app.get("/tracks", async (req, res) => {
 app.post("/simulateRace", async (req, res) => {
   console.log("TRYING TO SIMULATE RACE");
   const trackId = req.body.id;
-  console.log(trackId);
 
   const randomNumber = () => {
     return Math.floor(Math.random() * 100);
@@ -31,7 +30,6 @@ app.post("/simulateRace", async (req, res) => {
   const [driversSkills] =
     await db.query(`SELECT drivers.id, drivers.lname, drivers.driver_skill_factor, teams.team_skill_factor FROM drivers JOIN teams on drivers.team_id = teams.id;
   `);
-  console.log(driversSkills);
 
   // Result is calculated by sum of driver skill and team skill * randomized number.
   const calculatedResult = driversSkills.map( driver => ({
