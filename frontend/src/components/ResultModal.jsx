@@ -1,6 +1,7 @@
 import classes from "./ResultModal.module.css";
 
 const ResultModal = (props) => {
+
   return (
     <div className={classes.backdrop}>
       <div className={classes.modal}>
