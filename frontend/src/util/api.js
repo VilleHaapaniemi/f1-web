@@ -6,7 +6,7 @@ export async function getTracks() {
     return response
 }
 
-export async function simulateRace(track) {
+export async function simulateRace(track) { // Simulated race object send to backend.
     console.log(track);
 
     await fetch('http://localhost:5000/simulateRace', {
