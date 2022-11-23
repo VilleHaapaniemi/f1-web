@@ -10,21 +10,20 @@ const NextTrack = (props) => {
   const trackImg = require(`../assets/${track.img_filename}`);
   const navigate = useNavigate();
 
-  const [showResultModal, setShowResultModal] = useState(false);
 
-  const simulateRaceHandler = () => {
-    simulateRace(track);
-    setShowResultModal(true);
-  };
+  // const simulateRaceHandler = () => {
+  //   simulateRace(track);
+  //   setShowResultModal(true);
+  // };
 
-  const resultHandler = () => {
-    setShowResultModal(false);
-    navigate(0);
-  }
+  // const resultHandler = () => {
+  //   setShowResultModal(false);
+  //   navigate(0);
+  // }
 
   return (
     <>
-      {showResultModal && <ResultModal onConfirm={resultHandler} />}
+      {props.showResultModal && <ResultModal onConfirm={props.onConfirmResults} />}
       <div className={classes.nextTrack}>
         <h2>Next track</h2>
         <div className={classes.flex}>

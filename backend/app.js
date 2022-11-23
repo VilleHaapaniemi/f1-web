@@ -23,7 +23,7 @@ app.post("/simulateRace", async (req, res) => {
   const trackId = req.body.id;
 
   const randomNumber = () => {
-    return Math.floor(Math.random() * 100);
+    return Math.floor(Math.random() * 100 + 1);
   }
 
   // Query result have drivers id, name, skill and team skill.
@@ -31,9 +31,9 @@ app.post("/simulateRace", async (req, res) => {
     await db.query(`SELECT drivers.id, drivers.lname, drivers.driver_skill_factor, teams.team_skill_factor FROM drivers JOIN teams on drivers.team_id = teams.id;
   `);
 
-  // Result is calculated by sum of driver skill and team skill * randomized number.
+  // SimulatedPoints is calculated by sum of driver skill and team skill * randomized number.
   const calculatedResult = driversSkills.map( driver => ({
-    ...driver, skillSum: (+driver.driver_skill_factor + +driver.team_skill_factor) * randomNumber()
+    ...driver, simulatedPoints: (+driver.driver_skill_factor + +driver.team_skill_factor) * randomNumber()
   }))
   console.log(calculatedResult);
 

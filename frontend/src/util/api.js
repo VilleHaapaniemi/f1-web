@@ -7,7 +7,6 @@ export async function getTracks() {
 }
 
 export async function simulateRace(track) { // Simulated race object send to backend.
-    console.log(track);
 
     await fetch('http://localhost:5000/simulateRace', {
         method: 'POST',

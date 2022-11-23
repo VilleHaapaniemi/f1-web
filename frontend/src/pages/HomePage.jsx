@@ -6,17 +6,30 @@ import NextTrack from "../components/NextTrack";
 
 const HomePage = () => {
   const loaderData = useLoaderData();
-  const [nextTrack, setNextTrack] = useState(loaderData.find((track) => track.result === null))
-  //const nextTrack = loaderData.find((track) => track.result === null);
+  const [nextTrack, setNextTrack] = useState(() =>
+    loaderData.find((track) => track.result === null)
+  );
+  const [showResultModal, setShowResultModal] = useState(false);
 
   const simulateRaceHandler = () => {
     simulateRace(nextTrack);
-    //setShowResultModal(true);
-    setNextTrack(loaderData[nextTrack.id + 1])
-    console.log('ddd')
+    setShowResultModal(true);
+    console.log(nextTrack);
+    setNextTrack(loaderData[nextTrack.id]); // Track id index starts from 1. Thats why there's no incrementing on loaderData index.
   };
 
-  return <NextTrack track={nextTrack} onSimulate={simulateRaceHandler} />;
+  const confirmResultsHandler = () => {
+    setShowResultModal(false);
+  };
+
+  return (
+    <NextTrack
+      track={nextTrack}
+      showResultModal={showResultModal}
+      onSimulate={simulateRaceHandler}
+      onConfirmResults={confirmResultsHandler}
+    />
+  );
 };
 
 export default HomePage;
