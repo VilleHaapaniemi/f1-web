@@ -3,32 +3,29 @@ import { useLoaderData } from "react-router-dom";
 
 import { getTracks, simulateRace } from "../util/api";
 import NextTrack from "../components/NextTrack";
+import PreviousRaces from "../components/PreviousRaces";
 
 const HomePage = () => {
   const loaderData = useLoaderData();
   const [nextTrack, setNextTrack] = useState(() =>
     loaderData.find((track) => track.result === null)
   );
-  const [showResultModal, setShowResultModal] = useState(false);
+  const [finishedTracks, setFinishedTracks] = useState(() =>
+    loaderData.filter((track) => track.result !== null).reverse()
+  );
 
   const simulateRaceHandler = () => {
     simulateRace(nextTrack);
-    setShowResultModal(true);
     console.log(nextTrack);
     setNextTrack(loaderData[nextTrack.id]); // Track id index starts from 1. Thats why there's no incrementing on loaderData index.
-  };
-
-  const confirmResultsHandler = () => {
-    setShowResultModal(false);
+    setFinishedTracks([nextTrack, ...finishedTracks]);
   };
 
   return (
-    <NextTrack
-      track={nextTrack}
-      showResultModal={showResultModal}
-      onSimulate={simulateRaceHandler}
-      onConfirmResults={confirmResultsHandler}
-    />
+    <>
+      <NextTrack track={nextTrack} onSimulate={simulateRaceHandler} />
+      <PreviousRaces finishedTracks={finishedTracks} />
+    </>
   );
 };
 

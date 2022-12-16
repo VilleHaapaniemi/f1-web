@@ -18,13 +18,27 @@ app.get("/tracks", async (req, res) => {
   }
 });
 
+app.get("/tracks/result/:id", async (req, res) => {
+  console.log("TRYING TO FETCH TRACK RESULT");
+  const trackId = req.params.id;
+  try {
+    const [result] = await db.query(
+      `SELECT result FROM tracks WHERE id=${trackId}`
+    );
+    console.log(result);
+    res.json(result);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 app.post("/simulateRace", async (req, res) => {
   console.log("TRYING TO SIMULATE RACE");
   const trackId = req.body.id;
 
   const randomNumber = () => {
     return Math.floor(Math.random() * 100 + 1);
-  }
+  };
 
   // Query result have drivers id, name, skill and team skill.
   const [driversSkills] =
@@ -32,9 +46,12 @@ app.post("/simulateRace", async (req, res) => {
   `);
 
   // SimulatedPoints is calculated by sum of driver skill and team skill * randomized number.
-  const calculatedResult = driversSkills.map( driver => ({
-    ...driver, simulatedPoints: (+driver.driver_skill_factor + +driver.team_skill_factor) * randomNumber()
-  }))
+  const calculatedResult = driversSkills.map((driver) => ({
+    ...driver,
+    simulatedPoints:
+      (+driver.driver_skill_factor + +driver.team_skill_factor) *
+      randomNumber(),
+  }));
   console.log(calculatedResult);
 
   try {
