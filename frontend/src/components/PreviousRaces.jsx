@@ -1,6 +1,15 @@
-const PreviousRaces = (props) => {
-  console.log(props.finishedTracks);
+import TrackItem from "./TrackItem";
 
-  return <h1>Hello</h1>;
+const PreviousRaces = (props) => {
+  const finishedTracks = props.finishedTracks;
+  console.log(finishedTracks);
+
+  return (
+    <div>
+      {finishedTracks.map((track) => (
+        <TrackItem key={track.id} country={track.country} />
+      ))}
+    </div>
+  );
 };
 export default PreviousRaces;
