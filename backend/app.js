@@ -32,9 +32,9 @@ app.get("/tracks/result/:id", async (req, res) => {
   }
 });
 
-app.post("/simulateRace", async (req, res) => {
+app.get("/simulateRace/:id", async (req, res) => {
   console.log("TRYING TO SIMULATE RACE");
-  const trackId = req.body.id;
+  const trackId = req.params.id;
 
   const randomNumber = () => {
     return Math.floor(Math.random() * 100 + 1);
@@ -53,11 +53,15 @@ app.post("/simulateRace", async (req, res) => {
       randomNumber(),
   }));
   console.log(calculatedResult);
+  resultNames = calculatedResult.map((value) => value.lname);
+  resultNamesJson = JSON.stringify(resultNames);
+  console.log(resultNamesJson);
 
   try {
     db.query(
-      `UPDATE tracks SET result = '["Max", "Charles"]' WHERE id=${trackId}`
+      `UPDATE tracks SET result = '${resultNamesJson}' WHERE id=${trackId}`
     );
+    res.json(resultNames);
   } catch (err) {
     console.log(err);
   }
