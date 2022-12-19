@@ -2,7 +2,6 @@ import TrackItem from "./TrackItem";
 
 const PreviousRaces = (props) => {
   const finishedTracks = props.finishedTracks;
-  console.log(finishedTracks);
 
   return (
     <div>

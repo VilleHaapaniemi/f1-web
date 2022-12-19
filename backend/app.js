@@ -52,6 +52,7 @@ app.get("/simulateRace/:id", async (req, res) => {
       (+driver.driver_skill_factor + +driver.team_skill_factor) *
       randomNumber(),
   }));
+  // Mapping only names from result object and change to json format for database.
   console.log(calculatedResult);
   resultNames = calculatedResult.map((value) => value.lname);
   resultNamesJson = JSON.stringify(resultNames);

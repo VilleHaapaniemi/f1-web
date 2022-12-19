@@ -5,14 +5,3 @@ export async function getTracks() {
     }
     return response
 }
-
-// export async function simulateRace(track) { // Simulated race object send to backend.
-
-//     await fetch('http://localhost:5000/simulateRace', {
-//         method: 'POST',
-//         body: JSON.stringify(track),
-//         headers: {
-//             'content-type': 'application/json'
-//         }
-//     })
-// }
