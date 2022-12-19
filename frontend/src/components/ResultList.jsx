@@ -1,9 +1,7 @@
 const ResultList = (props) => {
-    console.log(props.result);
+        
     return (
-        props.result.map((position) => (
-            <p>{position}</p>
-        ))
+        <p>{props.index}: {props.driver}</p>
     )
 }
 export default ResultList;
