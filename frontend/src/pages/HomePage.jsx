@@ -19,7 +19,6 @@ const HomePage = () => {
   );
   const [simulatingRace, setSimulatingRace] = useState(false);
 
-
   async function simulateRace(track) {
     setSimulatingRace(true);
     const response = await fetch(
@@ -28,9 +27,9 @@ const HomePage = () => {
     const raceResult = await response.json();
     console.log(raceResult);
     track.result = raceResult;
-    setSimulatingRace(false);
     setNextTrack(loaderData[track.id]); // Track id index starts from 1. Thats why there's no incrementing on loaderData index.
     setFinishedTracks([track, ...finishedTracks]);
+    setSimulatingRace(false);
   }
 
   const simulateRaceHandler = () => {
@@ -42,7 +41,7 @@ const HomePage = () => {
     <>
       <div className={classes.flexContainer}>
         <NextTrack track={nextTrack} onSimulate={simulateRaceHandler} />
-        <Results finishedTracks={finishedTracks} />
+        <Results finishedTracks={finishedTracks} simulating={simulatingRace} />
       </div>
       <PreviousRaces finishedTracks={finishedTracks} />
     </>

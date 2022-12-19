@@ -7,8 +7,11 @@ const Results = (props) => {
 
   let resultContent = <p>Start the season by simulating race!</p>;
 
-  // If there's finished tracks, map latest result to listing component.
-  if (finishedTracks.length > 0) {
+  if (props.simulating) {
+    resultContent = <p>Simulating race!</p>
+
+    // If there's finished tracks, map latest result to listing component.
+  } else if (finishedTracks.length > 0) {
     resultContent = finishedTracks[0].result.map((driver, index) => 
       <ResultList driver={driver} index={index} key={index} />
     );
