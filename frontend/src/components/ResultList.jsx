@@ -1,7 +1,11 @@
 const ResultList = (props) => {
         
     return (
-        <p>{props.index}: {props.driver}</p>
+        <tr key={props.index}>
+            <td>{props.index + 1}</td>
+            <td>{props.driver}</td>
+            <td>0</td>
+        </tr>
     )
 }
 export default ResultList;
