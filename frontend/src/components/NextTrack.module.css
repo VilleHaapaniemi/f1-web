@@ -1,6 +1,6 @@
 .nextTrack {
     margin-top: 2rem;
-    margin-left: 0.5rem;
+    margin-left: 1rem;
     width: 50rem;
     height: fit-content;
     background-color: rgb(255, 255, 255);
@@ -13,7 +13,7 @@
 }
 
 img {
-    height: 16rem;
+    width: 20rem;
     display: inline;
 }
 
@@ -21,4 +21,12 @@ h2 {
     margin: 0.5rem 1rem;
     font-size: 2rem;
     text-decoration: underline;
+}
+@media only screen and (max-width: 700px) {
+    .flex {
+        flex-direction: column;
+    }
+    .nextTrack {
+        width: fit-content;
+    }
 }

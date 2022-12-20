@@ -1,10 +1,11 @@
 import TrackItem from "./TrackItem";
+import classes from "./PreviousRaces.module.css";
 
 const PreviousRaces = (props) => {
   const finishedTracks = props.finishedTracks;
 
   return (
-    <div>
+    <div className={classes.container}>
       {finishedTracks.map((track) => (
         <TrackItem key={track.id} country={track.country} />
       ))}

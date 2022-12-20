@@ -1,0 +1,8 @@
+.trackCard {
+    height: 15rem;
+    width: 20rem;
+    margin: 0.5rem 2rem 0.5rem 1rem;
+    background-color: rgb(255, 255, 255);
+    border: 0.5rem solid rgb(199, 33, 33);
+    border-radius: 1rem;
+}
