@@ -52,6 +52,9 @@ app.get("/simulateRace/:id", async (req, res) => {
       (+driver.driver_skill_factor + +driver.team_skill_factor) *
       randomNumber(),
   }));
+
+  calculatedResult.sort((a, b) => a.simulatedPoints - b.simulatedPoints);
+
   // Mapping only names from result object and change to json format for database.
   console.log(calculatedResult);
   resultNames = calculatedResult.map((value) => value.lname);
@@ -60,7 +63,7 @@ app.get("/simulateRace/:id", async (req, res) => {
 
   try {
     db.query(
-      `UPDATE tracks SET result = '${resultNamesJson}' WHERE id=${trackId}`
+      `UPDATE tracks SET result ='${resultNamesJson}' WHERE id=${trackId}`
     );
     res.json(resultNames);
   } catch (err) {
