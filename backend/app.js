@@ -53,13 +53,30 @@ app.get("/simulateRace/:id", async (req, res) => {
       randomNumber(),
   }));
 
+  // Sorting result by simulated points. Ascending.    
   calculatedResult.sort((a, b) => a.simulatedPoints - b.simulatedPoints);
 
+  // Update race points to database.
+  const pointsReceived = [25, 18, 15, 12, 10, 8, 6, 4, 2, 1];
+  for (const [index, driver] of calculatedResult.entries()) {
+    const points = pointsReceived[index]
+    // Only race top 10 drivers get points. After looping 10 times, break.
+    if (index >= pointsReceived.length) {
+      break;
+    }
+
+    try {
+      db.query(
+        `UPDATE drivers SET points = points + ${points} WHERE id = ${driver.id}`
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   // Mapping only names from result object and change to json format for database.
-  console.log(calculatedResult);
   resultNames = calculatedResult.map((value) => value.lname);
   resultNamesJson = JSON.stringify(resultNames);
-  console.log(resultNamesJson);
 
   try {
     db.query(
