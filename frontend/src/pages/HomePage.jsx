@@ -8,6 +8,7 @@ import PreviousRaces from "../components/PreviousRaces";
 import Results from "../components/Results";
 
 import classes from "./HomePage.module.css";
+import SeasonFinished from "../components/SeasonFinished";
 
 const HomePage = () => {
   const loaderData = useLoaderData();
@@ -25,7 +26,6 @@ const HomePage = () => {
       `http://localhost:5000/simulateRace/${track.id}`
     );
     const raceResult = await response.json();
-    console.log(raceResult);
     track.result = raceResult;
     setNextTrack(loaderData[track.id]); // Track id index starts from 1. Thats why there's no incrementing on loaderData index.
     setFinishedTracks([track, ...finishedTracks]);
@@ -34,13 +34,21 @@ const HomePage = () => {
 
   const simulateRaceHandler = () => {
     simulateRace(nextTrack);
-    console.log(nextTrack);
   };
+
+  let nextTrackContent;
+  if (!nextTrack) { 
+    nextTrackContent = <SeasonFinished />
+  } else {
+    nextTrackContent = (
+      <NextTrack track={nextTrack} onSimulate={simulateRaceHandler} />
+    );
+  }
 
   return (
     <>
       <div className={classes.flexContainer}>
-        <NextTrack track={nextTrack} onSimulate={simulateRaceHandler} />
+        {nextTrackContent}
         <Results finishedTracks={finishedTracks} simulating={simulatingRace} />
       </div>
       <PreviousRaces finishedTracks={finishedTracks} />

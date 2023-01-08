@@ -88,6 +88,22 @@ app.get("/simulateRace/:id", async (req, res) => {
   }
 });
 
+app.get("/totalPoints", async (req, res) => {
+  console.log("TRYING TO FETCH TOTAL POINTS");
+  const dbQuery = 
+  `SELECT drivers.id, fname, lname, points, team_id, team_name
+    FROM drivers
+      JOIN teams ON drivers.team_id = teams.id
+    ORDER BY points DESC`;
+  try {
+    const [totalPoints] = await db.query(dbQuery);
+    res.json(totalPoints);
+    console.log(totalPoints);
+  } catch (err) {
+    console.log(err);
+  }
+})
+
 app.listen(5000, () => {
   console.log("BACKEND LISTENING ON PORT 5000");
 });
