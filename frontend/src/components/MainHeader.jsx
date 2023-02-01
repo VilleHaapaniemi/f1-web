@@ -10,7 +10,9 @@ const MainHeader = () => {
         <li>
           <NavLink className={classes.navLink}
             to="/"
-            //style={({ isActive }) => (isActive ? white : undefined)}
+            style={({ isActive }) => ({
+              color: isActive ? '#000000' : '#fff',
+            })}
           >
             Home
           </NavLink>
@@ -18,7 +20,9 @@ const MainHeader = () => {
         <li>
           <NavLink className={classes.navLink}
             to="/standings"
-            //style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            style={({ isActive }) => ({
+              color: isActive ? '#000000' : '#fff',
+            })}
           >
             Standings
           </NavLink>
