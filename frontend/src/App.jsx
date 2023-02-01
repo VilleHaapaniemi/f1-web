@@ -4,6 +4,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import classes from "./App.module.css";
 import RootLayout from "./pages/RootLayout";
 import HomePage, { loader as tracksLoader } from "./pages/HomePage";
+import Standings, { loader as totalPointsLoader } from "./components/Standings";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,18 @@ const router = createBrowserRouter([
       }
     ],
   },
+
+  {
+    path: "/standings",
+    element: <RootLayout />,
+    children: [
+      {
+        index: true,
+        element: <Standings />,
+        loader: totalPointsLoader
+      }
+    ]
+  }
 ]);
 
 function App() {
