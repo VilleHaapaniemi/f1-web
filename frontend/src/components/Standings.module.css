@@ -1,12 +1,21 @@
 .resultContainer {
     margin-top: 2rem;
     margin-left: 1rem;
+    padding: 1rem;
     width: fit-content;
     background-color: rgb(255, 255, 255);
     border: 0.5rem solid rgb(199, 33, 33);
     border-radius: 1rem;
     display: inline-block;
     vertical-align: top;
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+}
+
+td {
+    padding: 0.15rem 1.7rem;
 }
 
 

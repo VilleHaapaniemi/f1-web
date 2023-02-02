@@ -13,7 +13,7 @@ const NextTrack = (props) => {
           <div>
             <h3>{track.country}</h3>
             <h3>{track.track_name}</h3>
-            <button onClick={props.onSimulate}>Simulate race</button>
+            <button onClick={props.onSimulate}>Simulate Race</button>
           </div>
         </div>
       </div>

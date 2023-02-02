@@ -5,6 +5,7 @@
     background-color: rgb(255, 255, 255);
     border: 0.5rem solid rgb(199, 33, 33);
     border-radius: 1rem;
+    padding: 0.5rem;
 }
 .content {
     display: flex;
