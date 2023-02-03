@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import { getTotalPoints } from "../util/api";
-import StandingList from "./StandingList";
-import StandingListTeam from "./StandingListTeam";
+import StandingList from "../components/StandingList";
+import StandingListTeam from "../components/StandingListTeam";
 import classes from "./Standings.module.css";
 
 const Standings = () => {

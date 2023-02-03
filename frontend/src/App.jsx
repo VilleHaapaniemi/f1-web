@@ -4,7 +4,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import classes from "./App.module.css";
 import RootLayout from "./pages/RootLayout";
 import HomePage, { loader as tracksLoader } from "./pages/HomePage";
-import Standings, { loader as totalPointsLoader } from "./components/Standings";
+import Standings, { loader as totalPointsLoader } from "./pages/Standings";
+import TrackResult from "./pages/TrackResult";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,17 @@ const router = createBrowserRouter([
         index: true,
         element: <Standings />,
         loader: totalPointsLoader
+      }
+    ]
+  },
+
+  {
+    path: "/result/:id",
+    element: <RootLayout />,
+    children: [
+      {
+        index: true,
+        element: <TrackResult />,
       }
     ]
   }

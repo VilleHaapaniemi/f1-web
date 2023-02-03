@@ -9,7 +9,6 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get("/tracks", async (req, res) => {
-
   // Endpoint returns all tracks.
 
   console.log("TRYING TO FETCH TRACKS");
@@ -22,14 +21,13 @@ app.get("/tracks", async (req, res) => {
 });
 
 app.get("/tracks/result/:id", async (req, res) => {
-
   // Endpoint gets track id and returns that result.
 
   console.log("TRYING TO FETCH TRACK RESULT");
   const trackId = req.params.id;
   try {
     const [result] = await db.query(
-      `SELECT result FROM tracks WHERE id=${trackId}`
+      `SELECT * FROM tracks WHERE id=${trackId}`
     );
     console.log(result);
     res.json(result);
@@ -101,9 +99,8 @@ app.get("/simulateRace/:id", async (req, res) => {
 });
 
 app.get("/totalPoints", async (req, res) => {
-
   // Endpoint fetch total points for all drivers from database and returns that.
-  
+
   console.log("TRYING TO FETCH TOTAL POINTS");
   const dbQuery = `SELECT drivers.id, fname, lname, points, team_id, team_name
     FROM drivers
