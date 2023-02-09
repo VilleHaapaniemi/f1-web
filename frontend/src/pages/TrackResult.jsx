@@ -18,7 +18,7 @@ const TrackResult = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   console.log(result);
 

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import classes from "./TrackItem.module.css";
 
 const TrackItem = (props) => {
@@ -10,6 +11,9 @@ const TrackItem = (props) => {
           <p>1st: {props.result[0]}</p>
           <p>2nd: {props.result[1]}</p>
           <p>3rd: {props.result[2]}</p>
+        </div>
+        <div>
+          <Link to={`/result/${props.trackId}`}>View Result</Link>
         </div>
       </div>
     </div>
