@@ -115,6 +115,10 @@ app.get("/totalPoints", async (req, res) => {
   }
 });
 
+app.post("/postComment", async (req, res) => {
+  console.log(req.body);
+})
+
 app.listen(5000, () => {
   console.log("BACKEND LISTENING ON PORT 5000");
 });

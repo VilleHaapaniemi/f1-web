@@ -5,7 +5,7 @@ import classes from "./App.module.css";
 import RootLayout from "./pages/RootLayout";
 import HomePage, { loader as tracksLoader } from "./pages/HomePage";
 import Standings, { loader as totalPointsLoader } from "./pages/Standings";
-import TrackResult from "./pages/TrackResult";
+import TrackResult, { action as commentForm} from "./pages/TrackResult";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +39,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <TrackResult />,
+        action: commentForm,
       }
     ]
   }

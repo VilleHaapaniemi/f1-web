@@ -1,4 +1,7 @@
 .trackResult {
     margin: 3rem;
     color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }

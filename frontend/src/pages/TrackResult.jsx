@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import TrackResultList from "./TrackResultList";
+import CommentForm from "../components/CommentForm";
 import classes from "./TrackResult.module.css";
 
 const TrackResult = () => {
@@ -26,14 +27,39 @@ const TrackResult = () => {
 
   return (
     result && (
-      <div className={classes.trackResult}>
-        <h1>{result.track_name}</h1>
-        {result.result.map((driver, index) => (
-          <TrackResultList driver={driver} key={index} place={index + 1} />
-        ))}
-      </div>
+      <>
+        <div className={classes.trackResult}>
+          <div>
+            <h1>{result.track_name}</h1>
+            {result.result.map((driver, index) => (
+              <TrackResultList driver={driver} key={index} place={index + 1} />
+            ))}
+          </div>
+          <CommentForm />
+        </div>
+      </>
     )
   );
 };
 
 export default TrackResult;
+
+export async function action({ request, params }) {
+  const data = await request.formData();
+
+  const commentData = {
+    name: data.get('name'),
+  };
+
+  const response = await fetch("http://localhost:5000/postComment", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(commentData),
+  });
+
+  if (!response.ok) {
+    console.log("Error saving post");
+  }
+}
