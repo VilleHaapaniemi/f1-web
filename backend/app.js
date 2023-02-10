@@ -26,9 +26,7 @@ app.get("/tracks/result/:id", async (req, res) => {
   console.log("TRYING TO FETCH TRACK RESULT");
   const trackId = req.params.id;
   try {
-    const [result] = await db.query(
-      `SELECT * FROM tracks WHERE id=${trackId}`
-    );
+    const [result] = await db.query(`SELECT * FROM tracks WHERE id=${trackId}`);
     console.log(result);
     res.json(result);
   } catch (err) {
@@ -116,8 +114,23 @@ app.get("/totalPoints", async (req, res) => {
 });
 
 app.post("/postComment", async (req, res) => {
-  console.log(req.body);
-})
+  // Endpoint request have posting new comment form data and set it to database.
+
+  console.log("TRYING TO POST NEW COMMENT");
+  const author = req.body.author;
+  const content = req.body.content;
+  const trackId = req.body.trackId;
+
+  const dbQuery = `INSERT INTO comments 
+                    (author, content, submitted, track_id) 
+                  VALUES 
+                    ("${author}", "${content}", CURRENT_TIMESTAMP(), ${trackId})`;
+  try {
+    db.query(dbQuery);
+  } catch (err) {
+    console.log(err);
+  }            
+});
 
 app.listen(5000, () => {
   console.log("BACKEND LISTENING ON PORT 5000");

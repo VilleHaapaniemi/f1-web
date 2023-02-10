@@ -1,11 +1,18 @@
 import { Form } from "react-router-dom";
 
-const CommentForm = () => {
+const CommentForm = (props) => {
   return (
     <Form method="post">
-      <label>Name</label>
-      <input id="name" type="text" name="name" />
-      <button type="submit">Save</button>
+      <p>
+        <label>Author</label>
+        <input id="author" type="text" name="author" required />
+      </p>
+      <p>
+        <label>Comment</label>
+        <textarea id="content" name="content" rows="10" required />
+      </p>
+      <input type="hidden" name="trackId" value={props.trackId} />
+      <button type="submit">Comment</button>
     </Form>
   );
 };

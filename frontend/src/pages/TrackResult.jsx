@@ -35,7 +35,7 @@ const TrackResult = () => {
               <TrackResultList driver={driver} key={index} place={index + 1} />
             ))}
           </div>
-          <CommentForm />
+          <CommentForm trackId={id}/>
         </div>
       </>
     )
@@ -48,7 +48,9 @@ export async function action({ request, params }) {
   const data = await request.formData();
 
   const commentData = {
-    name: data.get('name'),
+    author: data.get('author'),
+    content: data.get('content'),
+    trackId: data.get('trackId'),
   };
 
   const response = await fetch("http://localhost:5000/postComment", {

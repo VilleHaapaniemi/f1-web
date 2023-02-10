@@ -81,3 +81,12 @@ VALUES ('Bahrain International Circuit', 'Bahrain', 'Bahrain.png'),
     ('Autodromo Hermanos Rodríguez', 'Mexico', 'Mexico.png'),
     ('Autodromo José Carlos Pace', 'Brazil', 'Brazil.png'),
     ('Yas Marina Circuit', 'Abu Dhabi', 'AbuDhabi.png');
+
+CREATE TABLE IF NOT EXISTS comments (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    author VARCHAR(255) NOT NULL,
+    content VARCHAR(1000) NOT NULL,
+    submitted TIMESTAMP NOT NULL,
+    track_id INT,
+    FOREIGN KEY(track_id) REFERENCES tracks(id)
+);
