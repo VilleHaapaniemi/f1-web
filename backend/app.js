@@ -113,7 +113,7 @@ app.get("/totalPoints", async (req, res) => {
   }
 });
 
-app.post("/postComment", async (req, res) => {
+app.post("/postComment", (req, res) => {
   // Endpoint request have posting new comment form data and set it to database.
 
   console.log("TRYING TO POST NEW COMMENT");
@@ -129,7 +129,23 @@ app.post("/postComment", async (req, res) => {
     db.query(dbQuery);
   } catch (err) {
     console.log(err);
-  }            
+  }
+});
+
+app.get("/getComments/:id", async (req, res) => {
+  // Endpoint fetch comments for specific track.
+
+  console.log("TRYING TO FETCH COMMENTS");
+
+  const trackId = req.params.id;
+  const dbQuery = `SELECT * FROM comments WHERE track_id = ${trackId}`;
+  try {
+    const [comments] = await db.query(dbQuery);
+    console.log(comments);
+    res.json(comments);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 app.listen(5000, () => {
