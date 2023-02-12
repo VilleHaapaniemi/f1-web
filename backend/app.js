@@ -130,6 +130,8 @@ app.post("/postComment", (req, res) => {
   } catch (err) {
     console.log(err);
   }
+
+  res.send();
 });
 
 app.get("/getComments/:id", async (req, res) => {

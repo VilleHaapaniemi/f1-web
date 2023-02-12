@@ -6,7 +6,6 @@ import RootLayout from "./pages/RootLayout";
 import HomePage, { loader as tracksLoader } from "./pages/HomePage";
 import Standings, { loader as totalPointsLoader } from "./pages/Standings";
 import TrackResult from "./pages/TrackResult";
-import PostComment, { action as submitComment} from "./pages/PostComment";
 
 
 const router = createBrowserRouter([
@@ -41,18 +40,6 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <TrackResult />,
-      }
-    ]
-  },
-
-  {
-    path: "/comment/:id",
-    element: <RootLayout />,
-    children: [
-      {
-        index: true,
-        element: <PostComment />,
-        action: submitComment,
       }
     ]
   },

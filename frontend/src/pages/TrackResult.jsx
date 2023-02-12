@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import TrackResultList from "./TrackResultList";
 import Comments from "../components/Comments";
+import CommentForm from "../components/CommentForm";
 import classes from "./TrackResult.module.css";
 
 const TrackResult = () => {
@@ -44,7 +45,7 @@ const TrackResult = () => {
             ))}
           </div>
           <Comments comments={comments} />
-          <Link to={`/comment/${id}`}>Comment</Link>
+          <CommentForm trackId={id} />
         </div>
       </>
     )
