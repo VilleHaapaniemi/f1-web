@@ -1,9 +1,11 @@
+import classes from "./CommentList.module.css";
+
 const CommentList = (props) => {
+
   return (
-    <div>
-      <p>{props.author}</p>
-      <pre><p>{props.content}</p></pre>
-      <p>{props.submitted}</p>
+    <div className={classes.commentList}>
+      <p><b>{props.author}</b> <i>{props.submitted}</i></p>
+      <pre>{props.content}</pre>
     </div>
   );
 };

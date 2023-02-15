@@ -1,0 +1,12 @@
+.commentList {
+    background-color: rgb(92, 92, 92);
+    border-radius: 1rem;
+    padding: 0.3rem;
+    margin: 0.5rem;
+}
+.commentList p {
+    color: rgb(178, 178, 178);
+}
+pre {
+    white-space: pre-wrap;
+}

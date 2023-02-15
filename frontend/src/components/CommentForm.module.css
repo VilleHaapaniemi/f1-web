@@ -1,0 +1,11 @@
+.formContainer {
+    margin-left: 2rem;
+}
+.formContainer label {
+    display: block;
+}
+.formContainer input textarea {
+    background-color: whitesmoke;
+    border-radius: 0.5rem;
+    font-size: 30rem;
+}

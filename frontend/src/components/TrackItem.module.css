@@ -27,3 +27,9 @@
 .trackCard a:hover {
     background-color: rgb(250, 4, 4);
 }
+.view {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}

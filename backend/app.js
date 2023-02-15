@@ -135,12 +135,17 @@ app.post("/postComment", (req, res) => {
 });
 
 app.get("/getComments/:id", async (req, res) => {
-  // Endpoint fetch comments for specific track.
+  // Endpoint fetch comments for specific race.
 
   console.log("TRYING TO FETCH COMMENTS");
 
   const trackId = req.params.id;
-  const dbQuery = `SELECT * FROM comments WHERE track_id = ${trackId}`;
+  const dbQuery = `SELECT id, 
+                      author, 
+                      content, 
+                      CONVERT(submitted, CHAR) AS submitted, 
+                      track_id
+                    FROM comments WHERE track_id = ${trackId}`;
   try {
     const [comments] = await db.query(dbQuery);
     console.log(comments);
@@ -149,6 +154,21 @@ app.get("/getComments/:id", async (req, res) => {
     console.log(err);
   }
 });
+
+app.get("/getCommentsCount/:id", async (req, res) => {
+  // Endpoint fetch how many comments specific race has.
+
+  console.log("TRYING TO FETCH COMMENTS COUNT");
+
+  const trackId = req.params.id;
+  const dbQuery = `SELECT COUNT(*) AS commentsCount FROM comments WHERE track_id = ${trackId};`;
+  try {
+    const [commentCount] = await db.query(dbQuery);
+    res.json(commentCount[0]);
+  } catch (err) {
+    console.log(err);
+  }
+})
 
 app.listen(5000, () => {
   console.log("BACKEND LISTENING ON PORT 5000");

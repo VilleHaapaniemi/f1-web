@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import classes from "./CommentForm.module.css";
 
 const CommentForm = (props) => {
   const id = props.trackId;
@@ -28,35 +29,37 @@ const CommentForm = (props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(commentData),
-    })
+    });
     refreshPage();
   };
-  
 
   return (
-    <form onSubmit={formSubmitHandler}>
-      <p>
-        <label>Author</label>
-        <input
-          id="author"
-          type="text"
-          name="author"
-          ref={authorInputRef}
-          required
-        />
-      </p>
-      <p>
-        <label>Comment</label>
-        <textarea
-          id="content"
-          name="content"
-          rows="10"
-          ref={contentInputRef}
-          required
-        />
-      </p>
-      <button>Comment</button>
-    </form>
+    <div className={classes.formContainer}>
+      <h2>Post Comment</h2>
+      <form onSubmit={formSubmitHandler}>
+        <p>
+          <label>Author</label>
+          <input
+            id="author"
+            type="text"
+            name="author"
+            ref={authorInputRef}
+            required
+          />
+        </p>
+        <p>
+          <label>Comment</label>
+          <textarea
+            id="content"
+            name="content"
+            rows="10"
+            ref={contentInputRef}
+            required
+          />
+        </p>
+        <button>Comment</button>
+      </form>
+    </div>
   );
 };
 

@@ -1,4 +1,5 @@
 import CommentList from "./CommentList";
+import classes from "./Comments.module.css";
 
 const Comments = (props) => {
   const comments = props.comments;
@@ -18,7 +19,7 @@ const Comments = (props) => {
   }
 
   return (
-    <div>
+    <div className={classes.commentsContainer}>
       <h2>Comments</h2>
       {commentsContent}
     </div>
