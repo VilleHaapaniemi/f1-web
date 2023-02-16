@@ -90,3 +90,13 @@ CREATE TABLE IF NOT EXISTS comments (
     track_id INT,
     FOREIGN KEY(track_id) REFERENCES tracks(id)
 );
+
+INSERT INTO comments (author, content, submitted, track_id)
+VALUES ('RacingFan23', 'Bahrain International Circuit never fails to deliver some amazing racing action. I was on the edge of my seat the entire time!', CURRENT_TIMESTAMP(), 1),
+        ('F1FeverDream', 'The Bahrain International Circuit race is always a highlight of the season. I cant wait to see what happens next year.', CURRENT_TIMESTAMP(), 1),
+        ('F1Addict99', 'Theres something special about the way the Bahrain International Circuit track is designed. It creates an amazing spectacle for fans and drivers alike.', CURRENT_TIMESTAMP(), 1),
+        ('CrazyRacer', 'Congrats to all the drivers who gave it their all at Bahrain International Circuit. The level of competition was truly inspiring.', CURRENT_TIMESTAMP(), 1),
+        ('F1Admirer01', 'Watching the drivers who made it onto the podium at Bahrain International Circuit was a real thrill. They earned it through hard work and determination.', CURRENT_TIMESTAMP(), 1),
+        ('Expert', 'Bahrain International Circuit is a true test of skill and strategy for F1 teams. Its always fascinating to see how different drivers approach it.', CURRENT_TIMESTAMP(), 1),
+        ('AceDriver', 'You can see the level of concentration on the drivers faces as they tackle the Bahrain International Circuit track. Its truly impressive.', CURRENT_TIMESTAMP(), 1),
+        ('F1PartyAnimal', 'The atmosphere at Bahrain International Circuit during the race weekend is incredible. Theres a real party vibe that I love.', CURRENT_TIMESTAMP(), 1);
